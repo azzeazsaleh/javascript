@@ -6,192 +6,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Notes on Javascript</title>
 </head>
-<style>
-  .highlight {
-    background-color: #ffcc00;
-  }
-
-  .sm-mg {
-    margin-left: 3em;
-  }
-
-  .code {
-    white-space: pre;
-
-    /* If you want to use a monospace font like <pre> does by default */
-    font-family: monospace;
-  }
-
-  /* <div class="code">
-    My code is so <span>cool</span> and I love it
-</div> */
-
-  code {
-    background-color: rgb(235, 233, 233);
-  }
-
-  .goto-top {
-    color: #FF0D00;
-    background-color: lightcyan;
-    box-shadow: 7px 10px 7px 1px;
-    text-decoration: none;
-  }
-
-  .goto-top:hover {
-    color: blue;
-  }
-
-  /* Style the button that is used to open and close the collapsible content */
-  .collapsible {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-  }
-
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active,
-  .collapsible:hover {
-    background-color: #ccc;
-  }
-
-  /* Style the collapsible content. Note: hidden by default */
-  /* .content {
-    padding: 0 18px;
-    display: none;
-    overflow: hidden;
-    background-color: #f1f1f1;
-  } */
-
-  .content {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-  }
-
-  .collapsible:after {
-    content: '\02795';
-    /* Unicode character for "plus" sign (+) */
-    font-size: 13px;
-    color: white;
-    float: right;
-    margin-left: 5px;
-  }
-
-  .active:after {
-    content: "\2796";
-    /* Unicode character for "minus" sign (-) */
-  }
-</style>
+<link rel="stylesheet" href="css/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 
 <body>
+  <nav id="top-nav"></nav>
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="#01-Introduction-14min">01-Introduction-14min</a>
+    <a href="#02-JS-Values-n-Variables-37min">02-JS-Values-n-Variables-37min</a>
+    <a href="#03-How-to-Model-Data-Efficiently-1hr-3min">03-How-to-Model-Data-Efficiently-1hr-3min</a>
+    <a href="#04-Controlling-Program-Logic-and-Flow-1hr-24min">04-Controlling-Program-Logic-and-Flow-1hr-24min</a>
 
-  <nav id="nav-directory">
-    <ul id="top-nav">
-      <li> <a href="#01-Introduction-14min">01-Introduction-14min</a></li>
-      <li> <a href="#02-JS-Values-n-Variables-37min">02-JS-Values-n-Variables-37min</a></li>
-      <li><a href="#03-How-to-Model-Data-Efficiently-1hr-3min">03-How-to-Model-Data-Efficiently-1hr-3min</a></li>
-      <li> <a
-          href="#04-Controlling-Program-Logic-and-Flow-1hr-24min">04-Controlling-Program-Logic-and-Flow-1hr-24min</a>
-      </li>
-      <li><a
-          href="#05-Capture-Collections-of-Data-with-Arrays-1hr-7min">05-Capture-Collections-of-Data-with-Arrays-1hr-7min</a>
-      </li>
-      <li><a href="#06-Objects---The-Core-of-Javascript-40min"> 06-Objects---The-Core-of-Javascript-40min</a></li>
-      <li><a href="#07-The-World-of-Loops-1hr-23min"> 07-The-World-of-Loops-1hr-23min</a></li>
-      <li><a href="#08-Writing-Reusable-Code-with-Functions-1hr-14min">
-          08-Writing-Reusable-Code-with-Functions-1hr-14min</a></li>
-      <li><a href="#09-An-Advanced-Look-at-Functions-1hr-16min"> 09-An-Advanced-Look-at-Functions-1hr-16min</a></li>
-      <li><a href="#10-Apply-Functions-to-Collections-of-Data-1hr-42min">
-          10-Apply-Functions-to-Collections-of-Data-1hr-42min</a></li>
-      <li><a href="#11-A-Few-Miscellaneous-JS-Features-1hr-5min"> 11-A-Few-Miscellaneous-JS-Features-1hr-5min</a></li>
-      <li><a href="#12-Object-Methods-and-the-This-Keyword-1hr-24min">
-          12-Object-Methods-and-the-This-Keyword-1hr-24min</a></li>
-      <li><a href="#13-JS-In-the-Browser---DOM-Manipulation-1hr-12min">
-          13-JS-In-the-Browser---DOM-Manipulation-1hr-12min</a></li>
-      <li><a href="#14-Twisting-the-DOM-to-Our-Will-2hr-7min"> 14-Twisting-the-DOM-to-Our-Will-2hr-7min</a></li>
-      <li><a href="#15-Communicating-with-Events-1hr-58min"> 15-Communicating-with-Events-1hr-58min</a></li>
-      <li><a href="#16-Asynchronous-Code-Callbacks-n-Promises-1hr-54min">
-          16-Asynchronous-Code-Callbacks-n-Promises-1hr-54min</a></li>
-      <li><a href="#7-Making-HTTP-Requests-1hr-25min"> 17-Making-HTTP-Requests-1hr-25min</a></li>
-      <li><a href="#18-Async-n-Await-JS-Magic-42min"> 18-Async-n-Await-JS-Magic-42min</a></li>
-      <li><a href="#19-Prototypes-Classes-The-New-Operator-1hr-24min">
-          19-Prototypes-Classes-The-New-Operator-1hr-24min</a></li>
-      <li><a href="#20-Drawing-Animations-2hr-21min"> 20-Drawing-Animations-2hr-21min</a></li>
-      <li><a href="#21-Application-Design-Patterns-3hr-44min"> 21-Application-Design-Patterns-3hr-44min</a></li>
-      <li><a href="#22-Javascript-with-the-Canvas-API-3hr-28min"> 22-Javascript-with-the-Canvas-API-3hr-28min</a></li>
-      <li><a href="#23-Make-a-Secret-Message-Sharing-App-46min"> 23-Make-a-Secret-Message-Sharing-App-46min</a></li>
-      <li><a href="#24-Create-Node-JS-Command-Line-Tools-2hr-16min"> 24-Create-Node-JS-Command-Line-Tools-2hr-16min</a>
-      </li>
-      <li><a href="#25-Create-Your-Own-Project-Runner-1hr-22min"> 25-Create-Your-Own-Project-Runner-1hr-22min</a></li>
-      <li><a href="#26-Project-Start-E-Commerce-App-1hr-9min"> 26-Project-Start-E-Commerce-App-1hr-9min</a></li>
-      <li><a href="#27-Design-a-Custom-Database-1hr-21min"> 27-Design-a-Custom-Database-1hr-21min</a></li>
-      <li><a href="#8-Production-Grade-Authentication-1hr-18min"> 28-Production-Grade-Authentication-1hr-18min</a></li>
-      <li><a href="#29-Structuring-Javascript-Projects-2hr-32min"> 29-Structuring-Javascript-Projects-2hr-32min</a></li>
-      <li><a href="#30-Image-and-File-Upload-1hr-50min"> 30-Image-and-File-Upload-1hr-50min</a></li>
-      <li><a href="#31-Building-a-Shopping-Cart-1hr-53min">31-Building-a-Shopping-Cart-1hr-53min</a></li>
-      <li><a href="#32-The-Basics-of-Testing-1hr-56min"> 32-The-Basics-of-Testing-1hr-56min</a></li>
-      <li><a href="#33-Building-a-Testing-Framework-From-Scratch-2hr-7min">
-          33-Building-a-Testing-Framework-From-Scratch-2hr-7min</a></li>
-    </ul>
-  </nav>
-  <div class="main">
+    <a
+      href="#05-Capture-Collections-of-Data-with-Arrays-1hr-7min">05-Capture-Collections-of-Data-with-Arrays-1hr-7min</a>
+
+    <a href="#06-Objects---The-Core-of-Javascript-40min"> 06-Objects---The-Core-of-Javascript-40min</a>
+    <a href="#07-The-World-of-Loops-1hr-23min"> 07-The-World-of-Loops-1hr-23min</a>
+    <a href="#08-Writing-Reusable-Code-with-Functions-1hr-14min">
+      08-Writing-Reusable-Code-with-Functions-1hr-14min</a>
+    <a href="#09-An-Advanced-Look-at-Functions-1hr-16min"> 09-An-Advanced-Look-at-Functions-1hr-16min</a>
+    <a href="#10-Apply-Functions-to-Collections-of-Data-1hr-42min">
+      10-Apply-Functions-to-Collections-of-Data-1hr-42min</a>
+    <a href="#11-A-Few-Miscellaneous-JS-Features-1hr-5min"> 11-A-Few-Miscellaneous-JS-Features-1hr-5min</a>
+    <a href="#12-Object-Methods-and-the-This-Keyword-1hr-24min">
+      12-Object-Methods-and-the-This-Keyword-1hr-24min</a>
+    <a href="#13-JS-In-the-Browser---DOM-Manipulation-1hr-12min">
+      13-JS-In-the-Browser---DOM-Manipulation-1hr-12min</a>
+    <a href="#14-Twisting-the-DOM-to-Our-Will-2hr-7min"> 14-Twisting-the-DOM-to-Our-Will-2hr-7min</a>
+    <a href="#15-Communicating-with-Events-1hr-58min"> 15-Communicating-with-Events-1hr-58min</a>
+    <a href="#16-Asynchronous-Code-Callbacks-n-Promises-1hr-54min">
+      16-Asynchronous-Code-Callbacks-n-Promises-1hr-54min</a>
+    <a href="#17-Making-HTTP-Requests-1hr-25min"> 17-Making-HTTP-Requests-1hr-25min</a>
+    <a href="#18-Async-n-Await-JS-Magic-42min"> 18-Async-n-Await-JS-Magic-42min</a>
+    <a href="#19-Prototypes-Classes-The-New-Operator-1hr-24min">
+      19-Prototypes-Classes-The-New-Operator-1hr-24min</a>
+    <a href="#20-Drawing-Animations-2hr-21min"> 20-Drawing-Animations-2hr-21min</a>
+    <a href="#21-Application-Design-Patterns-3hr-44min"> 21-Application-Design-Patterns-3hr-44min</a>
+    <a href="#22-Javascript-with-the-Canvas-API-3hr-28min"> 22-Javascript-with-the-Canvas-API-3hr-28min</a>
+    <a href="#23-Make-a-Secret-Message-Sharing-App-46min"> 23-Make-a-Secret-Message-Sharing-App-46min</a>
+    <a href="#24-Create-Node-JS-Command-Line-Tools-2hr-16min"> 24-Create-Node-JS-Command-Line-Tools-2hr-16min</a>
+
+    <a href="#25-Create-Your-Own-Project-Runner-1hr-22min"> 25-Create-Your-Own-Project-Runner-1hr-22min</a>
+    <a href="#26-Project-Start-E-Commerce-App-1hr-9min"> 26-Project-Start-E-Commerce-App-1hr-9min</a>
+    <a href="#27-Design-a-Custom-Database-1hr-21min"> 27-Design-a-Custom-Database-1hr-21min</a>
+    <a href="#28-Production-Grade-Authentication-1hr-18min"> 28-Production-Grade-Authentication-1hr-18min</a>
+    <a href="#29-Structuring-Javascript-Projects-2hr-32min"> 29-Structuring-Javascript-Projects-2hr-32min</a>
+    <a href="#30-Image-and-File-Upload-1hr-50min"> 30-Image-and-File-Upload-1hr-50min</a>
+    <a href="#31-Building-a-Shopping-Cart-1hr-53min">31-Building-a-Shopping-Cart-1hr-53min</a>
+    <a href="#32-The-Basics-of-Testing-1hr-56min"> 32-The-Basics-of-Testing-1hr-56min</a>
+    <a
+      href="#33-Building-a-Testing-Framework-From-Scratch-2hr-7min">33-Building-a-Testing-Framework-From-Scratch-2hr-7min</a>
+  </div>
+  <div id="main">
+    <button class="openbtn" id="menuBtn">☰ Menu</button>
     <h1>My notes on Colt Steele's Javascipt Course 2020</h1>
     <button type="button" id="01-Introduction-14min" class="collapsible">01-Introduction-14min</button>
     <div class="content">
-      <div>
-        <h3>Introduction to Course and JavaScript</h3>
-        <p>Course is part 1 and part 2. Part 1 covers all the syntax while part 2 has all the assignments. Part 2 starts
-          at section 20.</p>
-        <p>The javascript standards are governed by ecma script</p>
-        <p>
-          You can always check browser compatability for javascript commands with the following link:
-          <a href="http://caniuse.com" target="_blank">https://caniuse.com/</a>
-        </p>
-        <h4><a class="youtube-links" href="https://www.youtube.com/watch?v=rH1RTwaAeGc" target="_blank">Colt's Favorite
-            VS
-            Code
-            Extensions</a></h4>
-        <p class="youtube-links">
+      <h3>01-Introduction-14min</h3>
+      <p>Course is part 1 and part 2. Part 1 covers all the syntax while part 2 has all the assignments. Part 2 starts
+        at section 20.</p>
+      <p>The javascript standards are governed by ecma script</p>
+      <p>
+        You can always check browser compatability for javascript commands with the following link:
+        <a href="http://caniuse.com" target="_blank">https://caniuse.com/</a>
+      </p>
+      <h4><a class="youtube-links" href="https://www.youtube.com/watch?v=rH1RTwaAeGc" target="_blank">Colt's Favorite
+          VS
+          Code
+          Extensions</a></h4>
+      <p class="youtube-links">
 
-          <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=34s" target="_blank"
-            rel="noopener noreferrer">Emmet</a><br />
-          <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=147s" target="_blank"
-            rel="noopener noreferrer">Material
-            Theme</a><br />
-          <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=255s" target="_blank" rel="noopener noreferrer">Live
-            Server</a><br />
-          <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=359s" target="_blank" rel="noopener noreferrer">CSS
-            Peak</a><br />
-          <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=477s" target="_blank" rel="noopener noreferrer">Color
-            Highlight</a><br />
-          <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=597s" target="_blank" rel="noopener noreferrer">Bracket
-            Pair Colorizer</a><br />
-          <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=821s" target="_blank"
-            rel="noopener noreferrer">ES7/React
-            Snippets</a><br />
-          <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=978s" target="_blank"
-            rel="noopener noreferrer">Prettier
-            Now</a><br />
-        </p>
+        <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=34s" target="_blank"
+          rel="noopener noreferrer">Emmet</a><br />
+        <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=147s" target="_blank" rel="noopener noreferrer">Material
+          Theme</a><br />
+        <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=255s" target="_blank" rel="noopener noreferrer">Live
+          Server</a><br />
+        <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=359s" target="_blank" rel="noopener noreferrer">CSS
+          Peak</a><br />
+        <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=477s" target="_blank" rel="noopener noreferrer">Color
+          Highlight</a><br />
+        <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=597s" target="_blank" rel="noopener noreferrer">Bracket
+          Pair Colorizer</a><br />
+        <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=821s" target="_blank" rel="noopener noreferrer">ES7/React
+          Snippets</a><br />
+        <a href="https://www.youtube.com/watch?v=rH1RTwaAeGc&t=978s" target="_blank" rel="noopener noreferrer">Prettier
+          Now</a><br />
+      </p>
 
 
-        <h4><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener noreferrer">Closest thing to a
-            documentation of Javascript</a>
-        </h4>
+      <h4><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener noreferrer">Closest thing to a
+          documentation of Javascript</a>
+      </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
-      </div>
+      <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
     </div>
-    <button type="button" id="02-JS-Values-n-Variables-37min"
-      class="collapsible">02-JS-Values-n-Variables-37min</button>
+    <button type="button" id="02-JS-Values-n-Variables-37min" class="collapsible">02-JS-Values-n-Variables-37min -
+      <span class="bolded">const, let, and legacy var</span></button>
     <div class="content">
       <div>
         <h3>02-JS-Values-n-Variables-37min</h3>
@@ -238,11 +150,12 @@
             documentation of Javascript - Primitive Data Types</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
     <button type="button" id="03-How-to-Model-Data-Efficiently-1hr-3min"
-      class="collapsible">03-How-to-Model-Data-Efficiently-1hr-3min</button>
+      class="collapsible">03-How-to-Model-Data-Efficiently-1hr-3min - <span class="bolded">strings and their methods,
+        template literals, Math object</span></button>
     <div class="content">
       <div>
         <h3>03-How-to-Model-Data-Efficiently-1hr-3min</h3>
@@ -303,11 +216,12 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
     <button type="button" id="04-Controlling-Program-Logic-and-Flow-1hr-24min"
-      class="collapsible">04-Controlling-Program-Logic-and-Flow-1hr-24min</button>
+      class="collapsible">04-Controlling-Program-Logic-and-Flow-1hr-24min - <span class="bolded">Comparison, if, ternary
+        operator</span></button>
     <div class="content">
       <div>
         <h3>04-Controlling-Program-Logic-and-Flow-1hr-24min</h3>
@@ -376,11 +290,12 @@
             documentation of Javascript - Control Flow on MDN</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
     <button type="button" id="05-Capture-Collections-of-Data-with-Arrays-1hr-7min"
-      class="collapsible">05-Capture-Collections-of-Data-with-Arrays-1hr-7min</button>
+      class="collapsible">05-Capture-Collections-of-Data-with-Arrays-1hr-7min - <span class="bolded">Arrays and their
+        methods</span></button>
     <div class="content">
       <div>
         <h3>05-Capture-Collections-of-Data-with-Arrays-1hr-7min</h3>
@@ -607,11 +522,12 @@
             target="_blank" rel="noopener noreferrer">Closest thing to a
             documentation of Javascript - Arrays on MDN</a>
         </h4>
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
     <button type="button" id="06-Objects---The-Core-of-Javascript-40min"
-      class="collapsible">06-Objects---The-Core-of-Javascript-40min</button>
+      class="collapsible">06-Objects---The-Core-of-Javascript-40min - <span class="bolded">Objects and
+        types</span></button>
     <div class="content">
       <div>
         <h3>06-Objects---The-Core-of-Javascript-40min</h3>
@@ -714,11 +630,12 @@
             documentation of Javascript - Objects on MDN</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" id="07-The-World-of-Loops-1hr-23min"
-      class="collapsible">07-The-World-of-Loops-1hr-23min</button>
+    <button type="button" id="07-The-World-of-Loops-1hr-23min" class="collapsible">07-The-World-of-Loops-1hr-23min -
+      <span class="bolded">for
+        loops, while loops, for of(arrays), for in(objects)</span></button>
     <div class="content">
       <div>
         <h3>07-The-World-of-Loops-1hr-23min</h3>
@@ -908,11 +825,12 @@
             documentation of Javascript - LOOPS on MDN</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
     <button type="button" id="08-Writing-Reusable-Code-with-Functions-1hr-14min"
-      class="collapsible">08-Writing-Reusable-Code-with-Functions-1hr-14min</button>
+      class="collapsible">08-Writing-Reusable-Code-with-Functions-1hr-14min - <span class="bolded">Functions, args,
+        return</span></button>
     <div class="content">
       <div>
         <h3>08-Writing-Reusable-Code-with-Functions-1hr-14min</h3>
@@ -977,11 +895,13 @@
             documentation of Javascript - MDN Guide to Functions</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
     <button type="button" id="09-An-Advanced-Look-at-Functions-1hr-16min"
-      class="collapsible">09-An-Advanced-Look-at-Functions-1hr-16min</button>
+      class="collapsible">09-An-Advanced-Look-at-Functions-1hr-16min - <span class="bolded">Scope, higher order
+        functions, callbacks,
+        hoisting</span></button>
     <div class="content">
       <div>
         <h3>09-An-Advanced-Look-at-Functions-1hr-16min</h3>
@@ -1188,11 +1108,13 @@
             rel="noopener noreferrer">Closest thing to a
             documentation of Javascript - MDN Guide to Functions</a>
         </h4>
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
     <button type="button" id="10-Apply-Functions-to-Collections-of-Data-1hr-42min"
-      class="collapsible">10-Apply-Functions-to-Collections-of-Data-1hr-42min</button>
+      class="collapsible">10-Apply-Functions-to-Collections-of-Data-1hr-42min - <span class="bolded">forEach, map, arrow
+        functions, find,
+        filter, some&every, sort, reduce</span></button>
     <div class="content">
       <div>
         <h3>10-Apply-Functions-to-Collections-of-Data-1hr-42min</h3>
@@ -1857,11 +1779,12 @@
             rel="noopener noreferrer">Closest thing to a
             documentation of Javascript - MDN Guide to Functions</>
         </h4>
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
     <button type="button" id="11-A-Few-Miscellaneous-JS-Features-1hr-5min"
-      class="collapsible">11-A-Few-Miscellaneous-JS-Features-1hr-5min -- spread, rest, destructuring parameters</button>
+      class="collapsible">11-A-Few-Miscellaneous-JS-Features-1hr-5min -- <span class="bolded">spread, rest,
+        destructuring parameters</span></button>
     <div class="content">
       <div>
         <h3>11-A-Few-Miscellaneous-JS-Features-1hr-5min</h3>
@@ -2236,11 +2159,13 @@
                 documentation of Javascript - ES6 In Depth: Destructuring</a>
             </h4>
 
-            <a href="#top-nav" class="goto-top">Goto top of page</a>
+            <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
     <button type="button" id="12-Object-Methods-and-the-This-Keyword-1hr-24min"
-      class="collapsible">12-Object-Methods-and-the-This-Keyword-1hr-24min</button>
+      class="collapsible">12-Object-Methods-and-the-This-Keyword-1hr-24min - <span class="bolded">shorthand object
+        properties, method
+        shorthand syntax, Deck Factory</span></button>
     <div class="content">
       <div>
         <h3>12-Object-Methods-and-the-This-Keyword-1hr-24min</h3>
@@ -2691,11 +2616,12 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
     <button type="button" id="13-JS-In-the-Browser---DOM-Manipulation-1hr-12min"
-      class="collapsible">13-JS-In-the-Browser---DOM-Manipulation-1hr-12min</button>
+      class="collapsible">13-JS-In-the-Browser---DOM-Manipulation-1hr-12min - <span class="bolded">selecting
+        elements</span></button>
     <div class="content">
       <div>
         <h3>13-JS-In-the-Browser---DOM-Manipulation-1hr-12min</h3>
@@ -2737,103 +2663,1725 @@
                 for(let input of inputs) {console.log(input.value)}
               </div>
             </li>
-            <li>A third way of selecting is getElementsByClassName
+            <li>A third way of selecting is getElementsByClassName, if you to style by classname you can use it.
+              <div class="code">
+                // To select all elements with the class of 'special':
+                document.getElementsByClassName('special');
+
+                //getElementsByClassName also returns an array-like object.
+                // We don't have access to array methods, but we can iterate:
+
+                const specials = document.getElementsByClassName('special');
+                for (let el of specials) {
+                console.log(el);
+                }
+
+                //We can use spread to make an actual array:
+                const arr = [...specials];
+                arr.pop() //this works because it's now an array!
+              </div>
+            </li>
+            <li>The swiss army knife way of selecting elements is using querySelector and querySelectorAll methods.
+              It returns an array like object called a nodeList which does have a method forEach. Its slightly slower on
+              performance as well.
+              <div class="code">
+                // ****************
+                // querySelector
+                // ****************
+                //To find the first li on the page:
+                document.querySelector('li');
+
+                //To find the first element with class of special:
+                document.querySelector('.special');
+
+                //To find the first element with id of main (there should only be one...)
+                document.querySelector('#main');
+
+                // To find the first li with the class of special, nested inside of a ul, nested inside a section:
+                document.querySelector('section ul li.special');
+
+                //querySelector uses the css selector methods for selecting elements.
+
+                // ****************
+                // querySelectorAll
+                // ****************
+
+                // To find ALL li's on the page:
+                document.querySelectorAll('li');
+
+                // To find ALL elements with the class of special on the page:
+                document.querySelectorAll('.special');
+              </div>
+            </li>
+          </ul>
+        </p>
+        <h4><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document" target="_blank"
+            rel="noopener noreferrer">Closest thing to a
+            documentation of Javascript -- Document properties and methods</a>
+        </h4>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
+      </div>
+    </div>
+    <button type="button" id="14-Twisting-the-DOM-to-Our-Will-2hr-7min"
+      class="collapsible">14-Twisting-the-DOM-to-Our-Will-2hr-7min - <span class="bolded">Altering styles, append,
+        prepend, &
+        insertBefore</span></button>
+    <div class="content">
+      <div>
+        <h3>14-Twisting-the-DOM-to-Our-Will-2hr-7min</h3>
+        <p><a href="13-JS-In-the-Browser---DOM-Manipulation-1hr-12min/The_DOM.pdf"
+            download="TheDOM.pdf">TheDOM.pdf</a><br><br>
+          1 Select >------------------------ > 2 Making changes to selection (This section) <br><br><br>
+          <a href="images/properties-n-methods-used-mostly-in-DOM.jpg" target="_blank"
+            download="Properties-n-Methods.jpg">Properties and Methods commonly used jpg download</a><br>
+          <h5>In order for the following methods and changes to work you must first use getElementBy... or like a
+            querySelector to assign
+            to a variable like so: const h1 = document.querySelector('h1');</h5>
+          <ul>
+            <li>Working with innerText & textContent. innerText selects all the text of all elements that the
+              querySelector returns. textContent returns similar to innerText but with all the spaces and if there is
+              any text in any sub elements. It also shows the hidden text if theres any. its slightly faster than
+              innerText as well but returns everything that you might not want to see.
+            </li>
+            <li>innerHTML returns not only all the text in an element but all of the tags in an elements
+              you could also add some html elements. You can add text like so: h1.innerHTML += 'is cool' and will add
+              phrase to end of text. This is similar to innerText but with innerHTML you can add bold tag like:
+              h1.innerHTML += '<b> is cool</b>' and it will update page.
+            </li>
+            <li>value, src, href, and more.
+              <ul>
+                <li>value is in the object and returns what was inputed in like a input field in a form.
+                  you can reset the value of input to an empty string after user enter input data like in a search bar.
+                  for checkbox you use the .checked to see if its true or false. The slider (min and max input type
+                  range) is accessed using value.
+                  .placeholder can be changed.
+                </li>
+                <li>.src or .href changes the link in like its respective tag.</li>
+              </ul>
+            </li>
+            <li>getAttribute() and setAttribute() methods are used to alter attributes on elements.
+              getAttribute('attribute') and setAttribute('attribute', 'data to change to'). Because changing a style
+              within
+              a html is not good practice, you can use setAttribute to add a class in html that is already defined in
+              CSS.
+            </li>
+            <li>parentElement, children, nextSibling, previousSibling all are used to reference elements based on where
+              the information is at on a web page
+              ex. an li tag selected would have parentElement as ul. Can use to go back up the tree and also go down
+              using sibling or children elements to change and modify their respective values.
+            </li>
+            <li>changing multiple elements:
+              <div class="code">
+                <pre>
+                // Select all LI's on the page:
+                const allLis = document.querySelectorAll('li');
+                
+                // One option, a regular for loop:
+                for (let i = 0; i < allLis.length; i++) {
+                  allLis[i].innerText = 'WE ARE THE CHAMPIONS!'
+                }
+                
+                //Another option using for...of:
+                for (let li of allLis) {
+                  li.innerHTML = 'WE ARE <b>THE CHAMPIONS</b>'
+                }
+              </pre>
+              </div>
+            </li>
+            <li>.style can be used to change the style of an element but it can't read styles unless its inline. ex:
+              <div class="code">
+                <pre>
+                // Changing the color and background-color:
+                const h1 = document.querySelector('h1');
+                h1.style.color = 'pink';
+                h1.style.backgroundColor = 'yellow' //camel cased! (not background-color but backgroundColor)
+                
+                // Changing Multiple Elements:
+                const allLis = document.querySelectorAll('li');
+                const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+                
+                allLis.forEach((li, i) => {
+                  const color = colors[i];
+                  li.style.color = color;
+                })                
+              </pre>
+              </div>
+            </li>
+            <li>getComputedStyle():
+              <div class="code">
+                <pre>
+                const h1 = document.querySelector('h1');
+
+                // style property only contains INLINE styles...
+                // Even though we gave the h1 a purple color, we still get:
+                h1.style.color; //"" 
+                // Same with any property we did not set inline:
+                h1.style.fontSize; //""
+                
+                // We can use getComputedStyle to figure out the ACTUAL styles that are applying:
+                const compStyles = getComputedStyle(h1);
+                compStyles.color; //"rgb(128, 0, 128)"  (purple as an RGB color)
+                compStyles.fontSize; //"60px"                
+              </pre>
+              </div>
+            </li>
+            <li>Manipulating classes. setAttribute will change class but it will delete whats already defined.
+              An alternative method to change class is classList:
+              <div class="code">
+                <pre>
+                const todo = document.querySelector('#todos .todo');
+
+                // Setting styles one at a time is not ideal:
+                // todo.style.color = 'gray';
+                // todo.style.textDecoration = 'line-through';
+                // todo.style.opacity = '50%'
+                
+                
+                // We can use a class instead!
+                // In app.css I've defined a 'done' class that we can apply
+                
+                // OPTION 1 - using setAttribute
+                //This adds the class 'done', but it overwrites any existing classes...
+                // todo.setAttribute('class', 'done');
+                
+                // OPTION 2 - classList
+                // We can use the classList property and it's methods to add,remove, and toggle classes!
+                todo.classList.add('done');
+                //to remove it
+                todo.classList.remove('done');
+                //to toggle:
+                todo.classList.toggle('done'); //add
+                todo.classList.toggle('done'); //remove
+                todo.classList.toggle('done'); //add
+                todo.classList.toggle('done'); //remove
+                todo.classList.toggle('done'); //add                
+              </pre>
+              </div>
+            </li>
+            <li>createElement can add an element with with attributes and add it to DOM:
+              <div class="code">
+                <pre>
+                  // Make a new empty img element:
+                  const newImg = document.createElement('img');
+                  // Add a src:
+                  newImg.src = 'https://images.unsplash.com/photo-1504006833117-8886a355efbf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80';
+                  // Change its width:
+                  newImg.style.width = "300px";
+                  
+                  //Add it to the end of the body:
+                  document.body.appendChild(newImg);
+                  
+                  
+                  // Create a new anchor tag
+                  const newLink = document.createElement('a');
+                  // Set its innerText:
+                  newLink.innerText = 'Mr. Bubz Video! CLICK MEEE';
+                  // Set its src:
+                  newLink.href = 'https://www.youtube.com/watch?v=QQNL83fhWJU';
+                  
+                  // Select the first paragraph:
+                  const firstP = document.querySelector('p');
+                  // Add the link as a child of the paragraph:
+                  firstP.appendChild(newLink);                  
+                </pre>
+              </div>
+            </li>
+            <li>Append, Prepend & insertBofore are used to add text in a position according to selected element. Append
+              and prepend at the time of this writing doesnt work with ie.
+              insertAdjacentElement <a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement">MDN
+                insertAdjacentElement()</a> is another method but its a little tricky(you could use other methods to
+              acheive same result):
+              <div class="code">
+                <pre>
+                  const parentUL = document.querySelector('ul');
+                  const newLI = document.createElement('li');
+                  newLI.innerText = 'I AM A NEW LIST ITEM!';
+                  
+                  //prepend will add newLI as the FIRST child of parentUL
+                  parentUL.prepend(newLI) //Doesn't work in IE!
+                  
+                  //We can also insert something BEFORE another element, using insertBefore.
+                  // First, select the element to insert before:
+                  const targetLI = document.querySelectorAll('li.todo')[2] //3rd li with class of 'todo'
+
+                  // To insert our new LI before targetLI...
+                  //parent.insertBefore(what to insert, where to insert)
+                  parentUL.insertBefore(newLI, targetLI);
+                  //Element.InsertAdjacentElement()
+              </pre>
+              </div>
+            </li>
+            <li>remove() and removeChild(). remove() is newer and doesnt work with ie. <br><a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild"> MDN removeChild </a> <br>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove">MDN remove()</a><br>
+              <div class="code">
+                <pre>
+                  // USING removeChild()
+                  //Select the element you want to remove;
+                  const removeMe = document.querySelector('.special')
+                  //We call removeChild() on the parent element and pass in the element we want to remove:
+                  removeMe.parentElement.removeChild(removeMe)
+                  
+                  // USING THE NEWER REMOVE() METHOD - NO INTERNET EXPLORER SUPPORT!
+                  //Select the H1
+                  const h1 = document.querySelector('h1');
+                  h1.remove(); //REMOVE IT!                  
+                </pre>
+              </div>
+            </li>
+          </ul>
+        </p>
+        <h4><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model" target="_blank"
+            rel="noopener noreferrer">Closest thing to a
+            documentation of Javascript -- DOM</a>
+          <h4><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Examples" target="_blank"
+              rel="noopener noreferrer">Closest thing to a
+              documentation of Javascript -- XML development using DOM</a>
+          </h4>
+
+          <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
+      </div>
+    </div>
+    <button type="button" id="15-Communicating-with-Events-1hr-58min"
+      class="collapsible">15-Communicating-with-Events-1hr-58min - <span class="bolded">addEventListener</span></button>
+    <div class="content">
+      <h3>15-Communicating-with-Events-1hr-58min</h3>
+      <pre><a href="https://developer.mozilla.org/en-US/docs/Web/Events" 
+          target="_blank" rel="noopener noreferrer">MDN DOM Events</a> 
+      </pre><br>
+      <ul>
+        <li>Ways that are not good for event listening. adding an attribute in html element, onclick="alert('Hi)'".
+          another like setting the key ex. btn.onclick="do something or use a callback function"
+        </li>
+        <li>addEventListener(): can be added many times to same element.
+          <div class="code">
+            <pre>
+              const btn = document.querySelector('button');
+
+              btn.addEventListener('click', function() {
+                alert('CLICKED!!!');
+              });
+              
+              btn.addEventListener('click', function() {
+                console.log('SECOND THING!!');
+              });
+              
+              btn.addEventListener('mouseover', function() {
+                btn.innerText = 'STOP TOUCHING ME';
+              });
+              
+              btn.addEventListener('mouseout', function() {
+                btn.innerText = 'Click Me!';
+              });
+              
+              window.addEventListener('scroll', function() {
+                console.log('STOP SCROLLING!!');
+              });
+            </pre>
+          </div>
+        </li>
+        <li>The impossible Button Demo:
+          <div class="code">
+            <pre>
+              const btn = document.querySelector('button');
+
+              btn.addEventListener('mouseover', function() {
+                console.log('MOUSED OVER ME!');
+                const height = Math.floor(Math.random() * window.innerHeight);
+                const width = Math.floor(Math.random() * window.innerWidth);
+                btn.style.left = `${width}px`;
+                btn.style.top = `${height}px`;
+              });
+              
+              btn.addEventListener('click', function() {
+                btn.innerText = 'YOU GOT ME!';
+                document.body.style.backgroundColor = 'green';
+              });                
+            </pre>
+          </div>
+        </li>
+        <li>Adding an event listner to a loop
+          <div class="code">
+            <pre>
+              const colors = [
+              'red',
+              'orange',
+              'yellow',
+              'green',
+              'blue',
+              'purple',
+              'indigo',
+              'violet'
+              ];
+              const changeColor = function() {
+                const h1 = document.querySelector('h1');
+                h1.style.color = this.style.backgroundColor;
+              };
+              const container = document.querySelector('#boxes');
+              
+              for (let color of colors) {
+                const box = document.createElement('div');
+                box.style.backgroundColor = color;
+                box.classList.add('box');
+                container.appendChild(box);
+                box.addEventListener('click', changeColor);
+              }
+            </pre>
+          </div>
+        </li>
+        <li>The difference between keypress and keydown and keyup is that all the keys
+          are identified when keys are pressed like shift or tab keypress doesnt recognized those. Keypress is
+          depricated:
+          <div class="code">
+            <pre>
+              const input = document.querySelector('#username');
+
+              input.addEventListener('keydown', function(e) {
+                console.log('KEY DOWN!');
+              });
+              
+              input.addEventListener('keyup', function(e) {
+                console.log('KEY UP!');
+              });
+              
+              input.addEventListener('keypress', function(e) {
+                console.log('KEY PRESS!');
+              });
+              
+              const addItemInput = document.querySelector('#addItem');
+              const itemsUL = document.querySelector('#items');
+              
+              addItemInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                  if (!this.value) return; //if input is empty, skip everything
+                  //add a new item to list
+                  const newItemText = this.value;
+                  const newItem = document.createElement('li');
+                  newItem.innerText = newItemText;
+                  itemsUL.appendChild(newItem);
+                  this.value = '';
+                }
+              });            
+            </pre>
+          </div>
+        </li>
+        <li>Form events & using Prevent Default:
+          <div class="code">
+            <pre>
+              const form = document.querySelector('#signup-form');
+
+              const creditCardInput = document.querySelector('#cc');
+              const termsCheckbox = document.querySelector('#terms');
+              const veggieSelect = document.querySelector('#veggie');
+              
+              form.addEventListener('submit', function(e) {
+                e.preventDefault(); //stops the request from being sent (prevents page reload)
+                console.log('cc', creditCardInput.value);
+                console.log('terms', termsCheckbox.checked);  //important to get whether its checked or not. value doesnt work.
+                console.log('veggieSelect', veggieSelect.value);
+                //send form data to db
+                //append something to page using form data
+              });
+            </pre>
+          </div>
+        </li>
+        <li>Input and change:
+          <div class="code">
+            <pre>
+              const creditCardInput = document.querySelector('#cc');
+              const termsCheckbox = document.querySelector('#terms');
+              const veggieSelect = document.querySelector('#veggie');
+              const formData = {};
+              // ONE callback works for any number of inputs!!
+              for (let input of [ creditCardInput, termsCheckbox, veggieSelect ]) {
+                input.addEventListener('input', ({ target }) => {
+                  const { name, type, value, checked } = target;
+                  formData[name] = type === 'checkbox' ? checked : value;
+                  console.log(formData);
+                });
+              }
+              
+              //We could use hard-coded callbacks but above consolidates all the next three:
+              // creditCardInput.addEventListener('input', (e) => {
+              // 	console.log('CC CHANGED!', e);
+              // 	formData['cc'] = e.target.value;
+              // });
+              
+              // veggieSelect.addEventListener('input', (e) => {
+              // 	console.log('VEGGIE!', e);
+              // 	formData['veggie'] = e.target.value;
+              // });
+              
+              // termsCheckbox.addEventListener('input', (e) => {
+              // 	console.log('CHECKBOX', e);
+              // 	formData['agreeToTerms'] = e.target.checked;
+              // });   
+              
+              //to monitor change we change event lister to change instead of input.
+            </pre>
+          </div>
+        </li>
+      </ul>
+      </p>
+      <h4><a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank"
+          rel="noopener noreferrer">Closest
+          thing to a
+          documentation of Javascript -- Event Reference</a>
+      </h4>
+
+      <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
+    </div>
+    <button type="button" id="16-Asynchronous-Code-Callbacks-n-Promises-1hr-54min"
+      class="collapsible">16-Asynchronous-Code-Callbacks-n-Promises-1hr-54min</button>
+    <div class="content">
+      <div>
+        <h3>16-Asynchronous-Code-Callbacks-n-Promises-1hr-54min</h3>
+        <p><a href="16-Asynchronous-Code-Callbacks-n-Promises-1hr-54min/Async-js-promises-callbacks.pdf"
+            download="Asynchronous-Code-Callbacks-n-Promises.pdf">Asynchronous-Code-Callbacks-n-Promises.pdf</a>
+          <ul>
+            <li>The Call Stack: see pdf for illustrations. The call stack helps javascript keep
+              track of where it is in your code. It's like a bookmark to where you was in your book. The last thing that
+              was placed on the stack will be the first thing out. <br><br> When a script calls a function
+              the interpreter adds it to the call stack and then carries out the function. <br> Any functions
+              that are called by that function are added to the call stack further up, and run where their
+              calls are reached. <br> When the current function is finished, the interpreter takes it off the
+              stack and resumes execution where it left off in the last code listing.
+            </li>
+            <li>Call Stack debugging with Dev Tools. you need a html file with this code linked. On line 26 mark to
+              debug and step through.
+              <div class="code">
+                <pre>
+                  const repeat = (str, times) => {
+                    let result = '';
+                    for (let i = 0; i < times; i++) {
+                      result += str;
+                    }
+                    return result;
+                  };
+                  
+                  const scream = (str) => {
+                    return str.toUpperCase() + '!!!';
+                  };
+                  
+                  const getRantText = (phrase) => {
+                    let text = scream(phrase);
+                    let rant = repeat(text, 8);
+                    return rant;
+                  };
+                  
+                  const makeRant = (phrase, el) => {
+                    const h1 = document.createElement('h1');
+                    h1.innerText = getRantText(phrase);
+                    el.appendChild(h1);
+                  };
+                  console.log('HELLO!');
+                  
+                  makeRant('I hate mayonnaise', document.body);
+                  // makeRant('if you have to cough, please cover your mouth', document.body);                  
+                </pre>
+              </div>
+            </li>
+            <li>JS is single threaded. Meaning it can only carry one thread at a time. We have a way around it.
+            </li>
+            <li>We pass a callback function as a workaround rather than the program sit there waiting for information.
+              <div class="code">
+                <pre>
+                  console.log('I HAPPEN FIRST!');
+                  alert('Hi there!'); //This holds everything up!
+                  console.log('I HAPPEN SECOND!');
+                  
+                  // This is an example of a callback function. The browser works on timing the thread.
+                  console.log('I HAPPEN FIRST!');
+                  setTimeout(function() {
+                    //This does NOT hold everything up, because...
+                    //JS relies on THE BROWSER itself to keep track of the timer
+                    console.log('I HAPPEN THIRD!');
+                  }, 3000);
+                  console.log('I HAPPEN SECOND!');                  
+                </pre>
+              </div>
+              Website to run javascript on and it will show the call stack, web api, and callback que <a
+                href="http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D"
+                target="_blank" rel="noopener noreferrer">http://latentflip.com/loupe</a>
+            </li>
+            <li>Callback Hell! Callbacks are not perfect, they can get messy very quickly.
+              This code moves a button across the screen in intervals. transform is used because its light on the
+              browser
+              than using left. the code: <a
+                href="16-Asynchronous-Code-Callbacks-n-Promises-1hr-54min/16-03-Welcome-to-Callback-Hell.zip"
+                download="16-03-Welcome-to-Callback-Hell.zip">16-03-Welcome-to-Callback-Hell.zip:</a> <br>
+              <div class="code">
+                <pre>
+                  const btn = document.querySelector('button');
+
+                  //This function moves an element "amount" number of pixels after a delay.
+                  //If the element will stay on screen, we move the element and call the onSuccess callback function
+                  //If the element will move off screen, we do not move the element and instead call the onFailure callback
+                  const moveX = (element, amount, delay, onSuccess, onFailure) => {
+                    setTimeout(() => {
+                      const bodyBoundary = document.body.clientWidth;
+                      //the above document.body.clientWidth returns the width of browser. 
+                      const elRight = element.getBoundingClientRect().right;
+                      //getBoundingClientRect object shows the element in relation to window
+                      const currLeft = element.getBoundingClientRect().left;
+                      if (elRight + amount > bodyBoundary) {
+                        onFailure();
+                      }
+                      else {
+                        element.style.transform = `translateX(${currLeft + amount}px)`;
+                        onSuccess();
+                      }
+                    }, delay);
+                  };
+                  
+                  // LOOK AT THIS UGLY MESS!
+                  moveX(
+                    btn,
+                    300,
+                    1000,
+                    () => {
+                      //success callback
+                      moveX(
+                        btn,
+                        300,
+                        1000,
+                        () => {
+                          //success callback
+                          moveX(
+                            btn,
+                            300,
+                            1000,
+                            () => {
+                              //success callback
+                              moveX(
+                                btn,
+                                300,
+                                1000,
+                                () => {
+                                  //success callback
+                                  moveX(
+                                    btn,
+                                    300,
+                                    1000,
+                                    () => {
+                                      //success callback
+                                      alert('YOU HAVE A WIDE SCREEN!');
+                                    },
+                                    () => {
+                                      //failure callback
+                                      alert('CANNOT MOVE FURTHER!');
+                                    }
+                                  );
+                                },
+                                () => {
+                                  //failure callback
+                                  alert('CANNOT MOVE FURTHER!');
+                                }
+                              );
+                            },
+                            () => {
+                              //failure callback
+                              alert('CANNOT MOVE FURTHER!');
+                            }
+                          );
+                        },
+                        () => {
+                          //failure callback
+                          alert('CANNOT MOVE FURTHER!');
+                        }
+                      );
+                    },
+                    () => {
+                      //failure callback
+                      alert('CANNOT MOVE FURTHER!');
+                    }
+                  );                  
+                </pre>
+              </div>
 
             </li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>There is a better way Intro to Promises, promises allow us to rewrite code above without all the nesting
+              and is easier to read. A Promise is an object representing the eventual completion or failure of an
+              asynchronous operation. Every promise has a .then method and will run callback when promise is resolved
+              and .catch will run
+              callback when it is rejected. ex:
+              <div class="code">
+                <pre>
+                  const willGetYouADog = new Promise((resolve, reject) => {
+                    const rand = Math.random();
+                    if (rand < 0.5) {
+                      resolve();
+                    }
+                    else {
+                      reject();
+                    }
+                  });
+                  willGetYouADog.then(() => {
+                    console.log('YAY WE GOT A DOG!!!!');
+                  });
+                  willGetYouADog.catch(() => {
+                    console.log(':( NO DOG');
+                  });                  
+                </pre>
+              </div>
+            </li>
+            <li>The previous code is not significant to show power of promise. Now we will add timer.
+              This code below combines .then and .catch, adds a timer, and is a function that returns a promise rather
+              than creating a new function and assigning to a variable.
+              <div class="code">
+                <pre>
+                  const makeDogPromise = () => {
+                    return new Promise((resolve, reject) => {
+                      setTimeout(() => {
+                        const rand = Math.random();
+                        if (rand < 0.5) {
+                          resolve();
+                        }
+                        else {
+                          reject();
+                        }
+                      }, 5000);
+                    });
+                  };
+                  makeDogPromise()
+                    .then(() => {
+                      console.log('YAY WE GOT A DOG!!!!');
+                    })
+                    .catch(() => {
+                      console.log(':( NO DOG');
+                    });                  
+                </pre>
+              </div>
+            </li>
+            <li>Usually you want a value from a promise returned to indicate why something didnt work.
+              <div class="code">
+                <pre>
+                  //This is a FAKE Http Request Function
+                  //It takes 1 second to resolve or reject the promise, depending on the url that is passed in
+                  const fakeRequest = (url) => {
+                    return new Promise((resolve, reject) => {
+                      setTimeout(() => {
+                        const pages = {
+                          '/users' : [
+                            { id: 1, username: 'Bilbo' },
+                            { id: 5, username: 'Esmerelda' }
+                          ],
+                          '/about' : 'This is the about page!'
+                        };
+                        const data = pages[url];
+                        if (data) {
+                          resolve({ status: 200, data }); //resolve with a value!
+                        }
+                        else {
+                          reject({ status: 404 }); //reject with a value!
+                        }
+                      }, 1000);
+                    });
+                  };
+                  
+                  fakeRequest('/users')
+                    .then((res) => {
+                      console.log('Status Code', res.status);
+                      console.log('Data', res.data);
+                      console.log('REQUEST WORKED!');
+                    })
+                    .catch((res) => {
+                      console.log(res.status);
+                      console.log('REQUEST FAILED');
+                    });
+                  
+                  fakeRequest('/dogs')
+                    .then((res) => {
+                      console.log('Status Code', res.status);
+                      console.log('Data', res.data);
+                      console.log('REQUEST WORKED!');
+                    })
+                    .catch((res) => {
+                      console.log(res.status);
+                      console.log('REQUEST FAILED');
+                    });
+                </pre>
+              </div>
+            </li>
+            <li>Understanding promise chaining.
+              <div class="code">
+                <pre>
+                  //This is a FAKE Http Request Function
+                  //It takes 1 second to resolve or reject the promise, depending on the url that is passed in
+                  const fakeRequest = (url) => {
+                    return new Promise((resolve, reject) => {
+                      setTimeout(() => {
+                        const pages = {
+                          '/users'        : [
+                            { id: 1, username: 'Bilbo' },
+                            { id: 5, username: 'Esmerelda' }
+                          ],
+                          '/users/1'      : {
+                            id        : 1,
+                            username  : 'Bilbo',
+                            upvotes   : 360,
+                            city      : 'Lisbon',
+                            topPostId : 454321
+                          },
+                          '/users/5'      : {
+                            id       : 5,
+                            username : 'Esmerelda',
+                            upvotes  : 571,
+                            city     : 'Honolulu'
+                          },
+                          '/posts/454321' : {
+                            id    : 454321,
+                            title :
+                              'Ladies & Gentlemen, may I introduce my pet pig, Hamlet'
+                          },
+                          '/about'        : 'This is the about page!'
+                        };
+                        const data = pages[url];
+                        if (data) {
+                          resolve({ status: 200, data }); //resolve with a value!
+                        }
+                        else {
+                          reject({ status: 404 }); //reject with a value!
+                        }
+                      }, 1000);
+                    });
+                  };
+                  
+                  fakeRequest('/users')
+                    .then((res) => {
+                      console.log(res);
+                      const id = res.data[0].id;
+                      return fakeRequest(`/users/${id}`);
+                    })
+                    .then((res) => {
+                      console.log(res);
+                      const postId = res.data.topPostId;
+                      return fakeRequest(`/posts/${postId}`);
+                    })
+                    .then((res) => {
+                      console.log(res);
+                    })
+                    .catch((err) => {
+                      console.log('OH NO!', err);
+                    });
+                  
+                  // ************************************************
+                  // ATTEMPT 2 (deliberate error to illustrate CATCH)
+                  // ************************************************
+                  // fakeRequest('/users')
+                  // 	.then((res) => {
+                  // 		console.log(res);
+                  // 		const id = res.data[0].id;
+                  // 		return fakeRequest(`/useALSKDJrs/${id}`); //INVALID URL, CATCH WILL RUN!
+                  // 	})
+                  // 	.then((res) => {
+                  // 		console.log(res);
+                  // 		const postId = res.data.topPostId;
+                  // 		return fakeRequest(`/posts/${postId}`);
+                  // 	})
+                  // 	.then((res) => {
+                  // 		console.log(res);
+                  // 	})
+                  // 	.catch((err) => {
+                  // 		console.log('OH NO!', err);
+                  // 	});
+                </pre>
+              </div>
+            </li>
+            <li>Refactoring Callback Hell!:
+              <div class="code">
+                <pre>
+                  const moveX = (element, amount, delay) => {
+                    return new Promise((resolve, reject) => {
+                      setTimeout(() => {
+                        const bodyBoundary = document.body.clientWidth;
+                        const elRight = element.getBoundingClientRect().right;
+                        const currLeft = element.getBoundingClientRect().left;
+                        if (elRight + amount > bodyBoundary) {
+                          reject({ bodyBoundary, elRight, amount });
+                        }
+                        else {
+                          element.style.transform = `translateX(${currLeft + amount}px)`;
+                          resolve();
+                        }
+                      }, delay);
+                    });
+                  };
+                  
+                  const btn = document.querySelector('button');
+                  moveX(btn, 100, 1000)
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .then(() => moveX(btn, 100, 1000))
+                    .catch(({ bodyBoundary, amount, elRight }) => {
+                      console.log(`Cannot Move! Body is ${bodyBoundary}px wide`);
+                      console.log(`Element is at ${elRight}px, ${amount}px is too large!`);
+                    });                  
+                </pre>
+              </div>
+            </li>
           </ul>
+        </p>
+        <h4><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+            target="_blank" rel="noopener noreferrer">Closest thing to a
+            documentation of Javascript -- Promise</a>
+        </h4>
+        <h4><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises" target="_blank"
+            rel="noopener noreferrer">Closest thing to a
+            documentation of Javascript -- Using Promises</a>
+        </h4>
 
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
+      </div>
+    </div>
+    <button type="button" id="17-Making-HTTP-Requests-1hr-25min" class="collapsible">17-Making-HTTP-Requests-1hr-25min -
+      <span class="bolded">AJAX/AJAJ, JSON, fetch, chaining</span></button>
+    <div class="content">
+      <div>
+        <h3>17-Making-HTTP-Requests-1hr-25min</h3>
+        <p>
+          <ul>
+            <li>Intro to Ajax-Asynchronous Javascript and XML, in the past it was xml now its JSON AJAJ. Requests
+              -xmlhttp,fetch,axios-
+              Sites like <a href="https://www.caniuse.com" target="_blank">www.caniuse.com</a> utilize AJAJ, the search
+              refreshes content on page without reloading a new page. You can see this in action by inspecting using
+              chrome and
+              viewing the network tab(XHR) and seeing request data JSON.
+            </li>
+            <li>JSON & XML is a format type for sending information. They both are encoding information to be sent
+              across the internet.
+              XML is older and just a broad way of transferring content. It still used by some. JSON- Java Script Object
+              Notation. It looks
+              like javascript but it is not just like javascript notation. Every key and value in JSON must be in double
+              quotes . but you
+              cant store functions in
+              objects. <a href="https://swapi.py4e.com/" target="_blank"
+                rel="noopener noreferrer">https://swapi.py4e.com/</a> is a
+              website that serves
+              api's where you could see response of JSON. There are also formatters online that tell you if your data
+              is a valid JSON.
+            </li>
+            <li>The original way of making requests: XML HTTP Requests <a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" target="_blank"
+                rel="noopener noreferrer">MDN XMLHttpRequests (XHR)</a>. Does not support promises so lots of callbacks.
+              <div class="code">
+                <pre>
+                  const firstReq = new XMLHttpRequest();
+                  firstReq.addEventListener('load', function () {
+                    console.log('IT WORKED!!!');
+                    const data = JSON.parse(this.responseText);
+                    for (let planet of data.results) {
+                      console.log(planet.name);
+                    }
+                  });
+                  firstReq.addEventListener('error', () => {
+                    console.log('ERROR!!!!!!');
+                  });
+                  firstReq.open('GET', 'https://swapi.py4e.com/api/planets/');
+                  firstReq.send();
+                  console.log('Request Sent!');                
+                </pre>
+              </div>
+            </li>
+            <li>Chaining requests to previous api.
+              <div class="code">
+                <pre>
+                  const firstReq = new XMLHttpRequest();
+                  firstReq.addEventListener('load', function () {
+                    console.log('FIRST REQUEST WORKED!!!');
+                    const data = JSON.parse(this.responseText);
+                    const filmURL = data.results[0].films[0];
+                    const filmReq = new XMLHttpRequest();
+                    filmReq.addEventListener('load', function () {
+                      console.log('SECOND REQUEST WORKED!!!');
+                      const filmData = JSON.parse(this.responseText);
+                      console.log(filmData.title);
+                    });
+                    filmReq.addEventListener('error', function (e) {
+                      console.log('ERROR!!', e);
+                    });
+                    filmReq.open('GET', filmURL);
+                    filmReq.send();
+                  });
+                  firstReq.addEventListener('error', (e) => {
+                    console.log('ERROR!!!!!!');
+                  });
+                  firstReq.open('GET', 'https://swapi.py4e.com/api/planets/');
+                  firstReq.send();
+                  console.log('Request Sent!');                  
+                </pre>
+              </div>
+              As you could see above the code gets long and similar to how we chained in previous chapter
+              before using promises.
+            </li>
+            <li>Fetch API is the newer way of making requests using JS. Supports promises. Not supported on IE.
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank"
+                rel="noopener noreferrer">MDN Fetch API</a> the previous code using fetch:
+              <div class="code">
+                <pre>
+                    fetch('https://swapi.py4e.com/api/planets/')
+                    .then((response) => {
+                      if (!response.ok)
+                        throw new Error(`Status Code Error: ${response.status}`);
+                  
+                      response.json().then((data) => {
+                        for (let planet of data.results) {
+                          console.log(planet.name);
+                        }
+                      });
+                    })
+                    .catch((err) => {
+                      console.log('SOMETHING WENT WRONG WITH FETCH!');
+                      console.log(err);
+                    });                    
+                  </pre>
+              </div>
+            </li>
+            <li>Chaining fetch requests. No nesting its flat
+              <div class="code">
+                <pre>
+                  fetch('https://swapi.py4e.com/api/planets/')
+                  .then((response) => {
+                    if (!response.ok)
+                      throw new Error(`Status Code Error: ${response.status}`);
+                
+                    return response.json();
+                  })
+                  .then((data) => {
+                    console.log('FETCHED ALL PLANETS (first 10)');
+                    const filmURL = data.results[0].films[0];
+                    return fetch(filmURL);
+                  })
+                  .then((response) => {
+                    if (!response.ok)
+                      throw new Error(`Status Code Error: ${response.status}`);
+                
+                    return response.json();
+                  })
+                  .then((data) => {
+                    console.log('FETCHED FIRST FILM, based off of first planet');
+                    console.log(data.title);
+                  })
+                  .catch((err) => {
+                    console.log('SOMETHING WENT WRONG WITH FETCH!');
+                    console.log(err);
+                  });
+                </pre>
+              </div>
+            </li>
+            <li>Going through next pages of API request to get more planets.
+              <div class="code">
+                <pre>
+                  const checkStatusAndParse = (response) => {
+                    if (!response.ok) throw new Error(`Status Code Error: ${response.status}`);
+                  
+                    return response.json();
+                  };
+                  
+                  const printPlanets = (data) => {
+                    console.log('Loaded 10 more planets...');
+                    for (let planet of data.results) {
+                      console.log(planet.name);
+                    }
+                    return Promise.resolve(data.next);
+                  };
+                  
+                  const fetchNextPlanets = (url = 'https://swapi.py4e.com/api/planets/') => {
+                    return fetch(url);
+                  };
+                  
+                  fetchNextPlanets()
+                    .then(checkStatusAndParse)
+                    .then(printPlanets)
+                    .then(fetchNextPlanets)
+                    .then(checkStatusAndParse)
+                    .then(printPlanets)
+                    .then(fetchNextPlanets)
+                    .then(checkStatusAndParse)
+                    .then(printPlanets)
+                    .catch((err) => {
+                      console.log('SOMETHING WENT WRONG WITH FETCH!');
+                      console.log(err);
+                    });
+                </pre>
+              </div>
+            </li>
+            <li>Even a better way AXIOS( <a href="https://github.com/axios/axios" target="_blank"
+                rel="noopener noreferrer">https://github.com/axios/axios</a> ) - its a library for making http requests.
+              The way to include into html is to call it using script before you call your javascript.
+              <div class="code">
+                <pre>
+                  axios
+                  .get('https://swapi.py4e.com/api/planets/')
+                  .then((res) => {
+                    //We don't have to parse the JSON!
+                    console.log(res.data);
+                  })
+                  .catch((err) => {
+                    console.log('IN CATCH CALLBACK!!!');
+                    console.log(err);
+                  });
+                
+                axios
+                  .get('https://swapi.co/api/planetaslkjdaklsjds/') //BAD URL!
+                  .then((res) => {
+                    //We don't need to check for a 200 status code, because...
+                    //Axios will reject the promise for us, unlike fetch!
+                    console.log(res.data);
+                  })
+                  .catch((err) => {
+                    //In this example with a not-found URL, this callback will run...
+                    console.log('IN CATCH CALLBACK!!!');
+                    console.log(err);
+                  });
+                </pre>
+              </div>
+            </li>
+            <li>Chaining requests using AXIOS
+              <div class="code">
+                <pre>
+                  // ********************************
+                  // CHAINING REQUESTS USING AXIOS
+                  // ********************************
+                  const fetchNextPlanets = (url = 'https://swapi.py4e.com/api/planets/') => {
+                    console.log(url);
+                    return axios.get(url);
+                  };
+                  const printPlanets = ({ data }) => {
+                    console.log(data);
+                    for (let planet of data.results) {
+                      console.log(planet.name);
+                    }
+                    return Promise.resolve(data.next);
+                  };
+                  
+                  fetchNextPlanets()
+                    .then(printPlanets)
+                    .then(fetchNextPlanets)
+                    .then(printPlanets)
+                    .then(fetchNextPlanets)
+                    .then(printPlanets)
+                    .catch((err) => {
+                      console.log('ERROR!!', err);
+                    });
+                </pre>
+              </div>
+            </li>
+          </ul>
+        </p>
+        <h4><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX" target="_blank"
+            rel="noopener noreferrer">Closest thing to a
+            documentation of Javascript -- AJAX</a>
+        </h4>
+        <h4><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank"
+            rel="noopener noreferrer">Closest thing to a
+            documentation of Javascript -- Fetch API</a>
+        </h4>
+        <h4><a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests"
+            target="_blank" rel="noopener noreferrer">Closest thing to a
+            documentation of Javascript -- Synchronous and Asynchronous Requests </a>
+        </h4>
+
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
+      </div>
+    </div>
+    <button type="button" id="18-Async-n-Await-JS-Magic-42min" class="collapsible">18-Async-n-Await-JS-Magic-42min -
+      <span class="bolded">parallel vs sequential requests</span></button>
+    <div class="content">
+      <div>
+        <h3>18-Async-n-Await-JS-Magic-42min</h3>
+        <p>
+          <ul>
+            <li>Async functions dont do nothing that we have already gone over. However,
+              the Async and Await functions allow us to do them in one line of code in like a synchronous manner.
+            </li>
+            <li>The Async keyword, it is used in front of function keyword. Async functions always return a promise.
+              If the function returns a value, the promise will be resolved with that value. If the function
+              throws an exception, the promise will be rejected.
+              <div class="code">
+                <pre>
+                  // REGULAR function returns a string:
+                  // function greet() {
+                  // 	return 'HELLO!!!';
+                  // }
+                  
+                  // THE ASYNC KEYWORD!
+                  // This function now returns a promise!
+                  async function greet() {
+                    return 'HELLO!!!'; //resolved with the value of 'HELLO!!!'
+                  }
+                  greet().then((val) => {
+                    console.log('PROMISE RESOLVED WITH: ', val);
+                  });
+                  
+                  async function add(x, y) {
+                    if (typeof x !== 'number' || typeof y !== 'number') {
+                      throw 'X and Y must be numbers!';
+                    }
+                    return x + y;
+                  }
+                  
+                  // Equivalent non-async function...
+                  // function add(x, y) {
+                  // 	return new Promise((resolve, reject) => {
+                  // 		if (typeof x !== 'number' || typeof y !== 'number') {
+                  // 			reject('X and Y must be numbers!');
+                  // 		}
+                  // 		resolve(x + y);
+                  // 	});
+                  // }
+                  
+                  add(6, 7)
+                    .then((val) => {
+                      console.log('PROMISE RESOLVED WITH: ', val);
+                    })
+                    .catch((err) => {
+                      console.log('PROMISE REJECTED WITH: ', err);
+                    });
+                </pre>
+              </div>
+            </li>
+            <li>The Await keyword, We can only use await keyword inside of function declared with async.
+              await will pause the execution of the function waiting for a promise to be resolved.
+              It looks and is kind of like a synchronous request.
+              <div class="code">
+                <pre>
+                  async function getPlanets() {
+                    const res = await axios.get('https://swapi.py4e.com/api/planets/');
+                    console.log(res.data); //only runs once the previous line is complete (the axios promise is resolved)
+                  }
+                  
+                  getPlanets();                  
+                </pre>
+              </div>
+            </li>
+            <li>What happens when there is a error with request. the previous code will not do nothing at all.
+              <div class="code">
+                <pre>
+                  // ONE OPTION FOR ERROR HANDLING...
+                  async function getPlanets() {
+                    //Invalid URL...
+                    const res = await axios.get('https://swapi.co/api/planeklsajdalksts/');
+                    console.log(res.data);
+                  } // doesnt catch error
+                  
+                  getPlanets().catch((err) => {
+                    console.log('IN CATCH!!!');
+                    console.log(err);
+                  });
+                  
+                  // ANOTHER OPTION...
+                  async function getPlanets() {
+                    try {
+                      const res = await axios.get('https://swapi.co/api/planeklsajdalksts/');
+                      console.log(res.data);
+                    } catch (e) {
+                      console.log('IN CATCH!', e);
+                    }
+                  }
+                  getPlanets();                  
+                </pre>
+              </div>
+            </li>
+            <li>Revisiting our previous example move right using Async/Await:
+              <div class="code">
+                <pre>
+                  const moveX = (element, amount, delay) => {
+                    return new Promise((resolve, reject) => {
+                      setTimeout(() => {
+                        const bodyBoundary = document.body.clientWidth;
+                        const elRight = element.getBoundingClientRect().right;
+                        const currLeft = element.getBoundingClientRect().left;
+                        if (elRight + amount > bodyBoundary) {
+                          reject({ bodyBoundary, elRight, amount });
+                        }
+                        else {
+                          element.style.transform = `translateX(${currLeft + amount}px)`;
+                          resolve();
+                        }
+                      }, delay);
+                    });
+                  };
+                  
+                  const btn = document.querySelector('button');
+                  async function animateRight(el, amt) {
+                    await moveX(el, amt, 1000);
+                    await moveX(el, amt, 1000);
+                    await moveX(el, amt, 1000);
+                    await moveX(el, amt, 1000);
+                    await moveX(el, amt, 1000);
+                    await moveX(el, amt, 1000);
+                    await moveX(el, amt, 1000);
+                    await moveX(el, amt, 1000);
+                    await moveX(el, amt, 1000);
+                    await moveX(el, amt, 1000);
+                  }
+                  animateRight(btn, 100).catch((err) => {
+                    console.log('Hit the right edge! Now Moving left!');
+                    animateRight(btn, -100);
+                  });                  
+                </pre>
+              </div>
+            </li>
+            <li>Parallel vs Sequential requests.
+              <div class="code">
+                <pre>
+                  // SEQUENTIAL REQUESTS!
+                  async function get3PokemonSequential() {
+                    const poke1 = await axios.get('https://pokeapi.co/api/v2/pokemon/1');
+                    const poke2 = await axios.get('https://pokeapi.co/api/v2/pokemon/2');
+                    const poke3 = await axios.get('https://pokeapi.co/api/v2/pokemon/3');
+                    console.log(poke1.data);
+                    console.log(poke2.data);
+                    console.log(poke3.data);
+                  }
+                  
+                  // PARALLEL REQUESTS!
+                  async function get3Pokemon() {
+                    const prom1 = axios.get('https://pokeapi.co/api/v2/pokemon/1');
+                    const prom2 = axios.get('https://pokeapi.co/api/v2/pokemon/2');
+                    const prom3 = axios.get('https://pokeapi.co/api/v2/pokemon/3');
+                    const poke1 = await prom1;
+                    const poke2 = await prom2;
+                    const poke3 = await prom3;
+                    console.log(poke1.data);
+                    console.log(poke2.data);
+                    console.log(poke3.data);
+                  }
+                  
+                  get3Pokemon();
+                  
+                  // *******************************************
+                  // A better demonstration of the difference...
+                  // *******************************************
+                  function changeBodyColor(color, delay) {
+                    return new Promise((resolve, reject) => {
+                      setTimeout(() => {
+                        document.body.style.backgroundColor = color;
+                        resolve();
+                      }, delay);
+                    });
+                  }
+                  
+                  // IN SEQUENCE
+                  async function lightShow() {
+                    await changeBodyColor('teal', 1000);
+                    await changeBodyColor('pink', 1000);
+                    await changeBodyColor('indigo', 1000);
+                    await changeBodyColor('violet', 1000);
+                  }
+                  // IN PARALLEL...
+                  // Everything is "sent off" at the same time
+                  // async function lightShow() {
+                  // 	const p1 = changeBodyColor('teal', 1000);
+                  // 	const p2 = changeBodyColor('pink', 1000);
+                  // 	const p3 = changeBodyColor('indigo', 1000);
+                  // 	const p4 = changeBodyColor('violet', 1000);
+                  // 	await p1;
+                  // 	await p2;
+                  // 	await p3;
+                  // 	await p4;
+                  // }
+                  
+                  lightShow();
+                </pre>
+              </div>
+            </li>
+            <li>Refactoring with Promise.all
+              <div class="code">
+                <pre>
+                  // PARALLEL REQUESTS!
+                  async function get3Pokemon() {
+                    const prom1 = axios.get('https://pokeapi.co/api/v2/pokemon/1');
+                    const prom2 = axios.get('https://pokeapi.co/api/v2/pokemon/2');
+                    const prom3 = axios.get('https://pokeapi.co/api/v2/pokemon/3');
+                    const results = await Promise.all([ prom1, prom2, prom3 ]);
+                    printPokemon(results);
+                  }
+                  
+                  function printPokemon(results) {
+                    for (let pokemon of results) {
+                      console.log(pokemon.data.name);
+                    }
+                  }
+                  
+                  get3Pokemon();                  
+                </pre>
+              </div>
+            </li>
+          </ul>
+        </p>
+        <h4><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await" target="_blank"
+            rel="noopener noreferrer">Closest thing to a
+            documentation of Javascript -- Async and Await</a>
+        </h4>
+
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
+      </div>
+    </div>
+    <button type="button" id="19-Prototypes-Classes-The-New-Operator-1hr-24min"
+      class="collapsible">19-Prototypes-Classes-The-New-Operator-1hr-24min - <span class="bolded">OOP, Constructor
+        functions, classes,
+        extends, super, and subclass</span></button>
+    <div class="content">
+      <div>
+        <h3>19-Prototypes-Classes-The-New-Operator-1hr-24min</h3>
+        <p>
+          <ul>
+            <li>What is a Prototype: <a
+                href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes"
+                target="_blank" rel="noopener noreferrer">MDN -- Object Prototypes</a> <br>
+              String.prototype contains all the string methods and
+              Array.prototype contains all the Array prototypes. We can change the existing by
+              assigning a value(function) to it or add our own by just assigning like following ex:
+              <div class="code">
+                <pre>
+                  //String.prototype is a "template object" for every single string.
+                  //We could go crazy and add our own method called yell...
+                  String.prototype.yell = function() {
+                    return `OMG!!! ${this.toUpperCase()}!!!!! AGHGHGHG!`;
+                  };
+                  
+                  'bees'.yell(); //"OMG!!! BEES!!!!! AGHGHGHG!"
+                  
+                  //We can overwrite an existing Array method like pop (not a good idea):
+                  Array.prototype.pop = function() {
+                    return 'SORRY I WANT THAT ELEMENT, I WILL NEVER POP IT OFF!';
+                  };
+                  const nums = [ 6, 7, 8, 9 ];
+                  nums.pop(); // "SORRY I WANT THAT ELEMENT, I WILL NEVER POP IT OFF!"
+                </pre>
+              </div>
+            </li>
+            <li>OOP intro in Javascript. We did the deck of cards with OOP, MakeDeck(). Or XMLRequest() makes an new
+              object.
+              We will go over Factory Functions, Constructor Functions, and then classes</li>
+            <li>Factory functions: Like in the following will make an object with hex and rgb values.
+              <div class="code">
+                <pre>
+                  //This functions makes and returns an object every time it is called.
+                  // The resulting objects all follow the same "recipe"
+                  function makeColor(r, g, b) {
+                    const color = {};
+                    color.r = r;
+                    color.g = g;
+                    color.b = b;
+                    color.rgb = function() {
+                      const { r, g, b } = this;
+                      return `rgb(${r}, ${g}, ${b})`;
+                    };
+                    color.hex = function() {
+                      const { r, g, b } = this;
+                      return (
+                        '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
+                      );
+                    };
+                    return color;
+                  }
+                  
+                  const firstColor = makeColor(35, 255, 150);
+                  firstColor.hex(); //firstColor.hex();
+                  firstColor.rgb(); //"rgb(35, 255, 150)"
+                  
+                  const black = makeColor(0, 0, 0);
+                  black.rgb(); //"rgb(0, 0, 0)"
+                  black.hex(); //"#0000s00"
+                </pre>
+              </div>
+              This method is not as ideal and not commonly used, there are other ways in the next few descriptions.
+            </li>
+            <li>Constructor Functions(is commonly used instead of Factory functions) <a
+                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new" target="_blank"
+                rel="noopener noreferrer">MDN -- NEW operator</a>:
+              <div class="code">
+                <pre>
+                  // This is a Constructor Function...
+                  function Color(r, g, b) {
+                    this.r = r;
+                    this.g = g;
+                    this.b = b;
+                  }
+                  
+                  //If you call it on its own like a regular function...
+                  Color(35, 60, 190); //undefined
+                  //It returns undefined. Seems useless!
+                  
+                  // *****************
+                  // THE NEW OPERATOR!
+                  // *****************
+                  
+                  // 1. Creates a blank, plain JavaScript object;
+                  // 2. Links (sets the constructor of) this object to another object;
+                  // 3. Passes the newly created object from Step 1 as the this context;
+                  // 4. Returns this if the function doesn't return its own object.
+                  
+                  Color.prototype.rgb = function() {
+                    const { r, g, b } = this;
+                    return `rgb(${r}, ${g}, ${b})`;
+                  };
+                  
+                  Color.prototype.hex = function() {
+                    const { r, g, b } = this;
+                    return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+                  };
+                  
+                  Color.prototype.rgba = function(a = 1.0) {
+                    const { r, g, b } = this;
+                    return `rgba(${r}, ${g}, ${b}, ${a})`;
+                  };
+                  
+                  const color1 = new Color(40, 255, 60);
+                  color1.hex();
+                  const color2 = new Color(0, 0, 0);
+                  color2.hex();
+                </pre>
+              </div>
+            </li>
+            <li>JavaScript Classes - Syntactical Sugar(cleaner and neater way to code) - The Class keyword.
+              You have to have class and constructor together to define a class. Also method needs to be capitalized,
+              its not required but its good practice.
+              <div class="code">
+                <pre>
+                  class Color {
+                    constructor(r, g, b, name) {
+                      this.r = r;
+                      this.g = g;
+                      this.b = b;
+                      this.name = name;
+                    }
+                    innerRGB() {
+                      const { r, g, b } = this;
+                      return `${r}, ${g}, ${b}`;
+                    }
+                    rgb() {
+                      return `rgb(${this.innerRGB()})`;
+                    }
+                    rgba(a = 1.0) {
+                      return `rgba(${this.innerRGB()}, ${a})`;
+                    }
+                    hex() {
+                      const { r, g, b } = this;
+                      return (
+                        '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
+                      );
+                    }
+                  }
+                  const red = new Color(255, 67, 89, 'tomato');
+                  const white = new Color(255, 255, 255, 'white');
+                </pre>
+              </div>
+            </li>
+            <li>More on Classes, next example is using hsl() which is a color description where the value is 0 to 360
+              representing the color around the color wheel, then saturation, then lightness: ex. hsl(130,50%,80%)
+              <div class="code">
+                <pre>
+                  class Color {
+                    constructor(r, g, b, name) {
+                      this.r = r;
+                      this.g = g;
+                      this.b = b;
+                      this.name = name;
+                      this.calcHSL();
+                    }
+                    innerRGB() {
+                      const { r, g, b } = this;
+                      return `${r}, ${g}, ${b}`;
+                    }
+                    rgb() {
+                      return `rgb(${this.innerRGB()})`;
+                    }
+                    rgba(a = 1.0) {
+                      return `rgba(${this.innerRGB()}, ${a})`;
+                    }
+                    hex() {
+                      const { r, g, b } = this;
+                      return (
+                        '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
+                      );
+                    }
+                    hsl() {
+                      const { h, s, l } = this;
+                      return `hsl(${h},${s}%, ${l}%)`;
+                    }
+                    fulllySaturated() {
+                      const { h, l } = this;
+                      return `hsl(${h},100%, ${l}%)`;
+                    }
+                    opposite() {
+                      const { h, s, l } = this;
+                      const newHue = (h + 180) % 360;
+                      return `hsl(${newHue},${s}%, ${l}%)`;
+                    }
+                    calcHSL() {
+                      let { r, g, b } = this;
+                      // Make r, g, and b fractions of 1
+                      r /= 255;
+                      g /= 255;
+                      b /= 255;
+                  
+                      // Find greatest and smallest channel values
+                      let cmin = Math.min(r, g, b),
+                        cmax = Math.max(r, g, b),
+                        delta = cmax - cmin,
+                        h = 0,
+                        s = 0,
+                        l = 0;
+                      if (delta == 0) h = 0;
+                      else if (cmax == r)
+                        // Red is max
+                        h = ((g - b) / delta) % 6;
+                      else if (cmax == g)
+                        // Green is max
+                        h = (b - r) / delta + 2;
+                      else
+                        // Blue is max
+                        h = (r - g) / delta + 4;
+                  
+                      h = Math.round(h * 60);
+                  
+                      // Make negative hues positive behind 360°
+                      if (h < 0) h += 360;
+                      // Calculate lightness
+                      l = (cmax + cmin) / 2;
+                  
+                      // Calculate saturation
+                      s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+                  
+                      // Multiply l and s by 100
+                      s = +(s * 100).toFixed(1);
+                      l = +(l * 100).toFixed(1);
+                      this.h = h;
+                      this.s = s;
+                      this.l = l;
+                    }
+                  }
+                  const red = new Color(255, 67, 89, 'tomato');
+                  red.hsl();
+                  red.opposite();
+                  red.rgba(0.3);
+                  const white = new Color(255, 255, 255, 'white');
+                </pre>
+              </div>
+            </li>
+            <li>Extends, Super, and Subclasses. Sharing inheritance across classes.
+              <div class="code">
+                <pre>
+                  class Pet {
+                    constructor(name, age) {
+                      console.log('IN PET CONSTRUCTOR!');
+                      this.name = name;
+                      this.age = age;
+                    }
+                    eat() {
+                      return `${this.name} is eating!`;
+                    }
+                  }
+                  
+                  class Cat extends Pet {
+                    constructor(name, age, livesLeft = 9) {
+                      console.log('IN CAT CONSTRUCTOR!');
+                      <span class="highlight">super</span>(name, age); //takes the already defined values from main class.
+                      this.livesLeft = livesLeft;
+                    }
+                    meow() {
+                      return 'MEOWWWW!!';
+                    }
+                  }
+                  
+                  class Dog <span class="highlight">extends</span> Pet {
+                    bark() {
+                      return 'WOOOF!!';
+                    }
+                    eat() {   //This method would be 1st returned then it will look at object prototype.
+                      return `${this.name} scarfs his food!`;
+                    }
+                  }
+                </pre>
+              </div>
+            </li>
+          </ul>
         </p>
 
-
-        <h4><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener noreferrer">Closest thing to a
-            documentation of Javascript</a>
+        <h4><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes"
+            target="_blank" rel="noopener noreferrer">Closest thing to a
+            documentation of Javascript -- Object Prototypes</a>
+        </h4>
+        <h4><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS"
+            target="_blank" rel="noopener noreferrer">Closest thing to a
+            documentation of Javascript -- Object Orientated JavaScript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" id="20-Drawing-Animations-2hr-21min" class="collapsible">20-Drawing-Animations-2hr-21min -
+      <span class="bolded">timers, SVG, secrets to animations</span></button>
     <div class="content">
-      <div id="14-Twisting-the-DOM-to-Our-Will-2hr-7min">
-        <h3>14-Twisting-the-DOM-to-Our-Will-2hr-7min</h3>
-        <h4><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener noreferrer">Closest thing to a
-            documentation of Javascript</a>
-        </h4>
-
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
-      </div>
-    </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
-    <div class="content">
-      <div id="15-Communicating-with-Events-1hr-58min">
-        <h3>15-Communicating-with-Events-1hr-58min</h3>
-        <h4><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener noreferrer">Closest thing to a
-            documentation of Javascript</a>
-        </h4>
-
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
-      </div>
-    </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
-    <div class="content">
-      <div id="16-Asynchronous-Code-Callbacks-n-Promises-1hr-54min">
-        <h3>16-Asynchronous-Code-Callbacks-n-Promises-1hr-54min</h3>
-        <h4><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener noreferrer">Closest thing to a
-            documentation of Javascript</a>
-        </h4>
-
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
-      </div>
-    </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
-    <div class="content">
-      <div id="17-Making-HTTP-Requests-1hr-25min">
-        <h3>17-Making-HTTP-Requests-1hr-25min</h3>
-        <h4><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener noreferrer">Closest thing to a
-            documentation of Javascript</a>
-        </h4>
-
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
-      </div>
-    </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
-    <div class="content">
-      <div id="18-Async-n-Await-JS-Magic-42min">
-        <h3>18-Async-n-Await-JS-Magic-42min</h3>
-        <h4><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener noreferrer">Closest thing to a
-            documentation of Javascript</a>
-        </h4>
-
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
-      </div>
-    </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
-    <div class="content">
-      <div id="19-Prototypes-Classes-The-New-Operator-1hr-24min">
-        <h3>19-Prototypes-Classes-The-New-Operator-1hr-24min</h3>
-        <h4><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener noreferrer">Closest thing to a
-            documentation of Javascript</a>
-        </h4>
-
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
-      </div>
-    </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
-    <div class="content">
-      <div id="20-Drawing-Animations-2hr-21min">
+      <div>
         <h3>20-Drawing-Animations-2hr-21min</h3>
+        <p>
+          <ul>
+            <li>App overview - building a timer with circle reflecting time elapsed all using html and javascript
+            </li>
+            <li>
+              <div class="code">
+                <pre></pre>
+              </div>
+            </li>
+            <li>
+              <div class="code">
+                <pre></pre>
+              </div>
+            </li>
+            <li>
+              <div class="code">
+                <pre></pre>
+              </div>
+            </li>
+            <li>
+              <div class="code">
+                <pre></pre>
+              </div>
+            </li>
+            <li>
+              <div class="code">
+                <pre></pre>
+              </div>
+            </li>
+            <li>
+              <div class="code">
+                <pre></pre>
+              </div>
+            </li>
+            <li>
+              <div class="code">
+                <pre></pre>
+              </div>
+            </li>
+          </ul>
+        </p>
         <h4><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener noreferrer">Closest thing to a
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" class="collapsible">Open Collapsible - <span class="bolded"></span></button>
     <div class="content">
       <div id="21-Application-Design-Patterns-3hr-44min">
         <h3>21-Application-Design-Patterns-3hr-44min</h3>
@@ -2841,10 +4389,10 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" class="collapsible">Open Collapsible - <span class="bolded"></span></button>
     <div class="content">
       <div id="22-Javascript-with-the-Canvas-API-3hr-28min">
         <h3>22-Javascript-with-the-Canvas-API-3hr-28min</h3>
@@ -2852,10 +4400,10 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" class="collapsible">Open Collapsible - <span class="bolded"></span></button>
     <div class="content">
       <div id="23-Make-a-Secret-Message-Sharing-App-46min">
         <h3>23-Make-a-Secret-Message-Sharing-App-46min</h3>
@@ -2863,10 +4411,10 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" class="collapsible">Open Collapsible - <span class="bolded"></span></button>
     <div class="content">
       <div id="24-Create-Node-JS-Command-Line-Tools-2hr-16min">
         <h3>24-Create-Node-JS-Command-Line-Tools-2hr-16min</h3>
@@ -2874,10 +4422,10 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" class="collapsible">Open Collapsible - <span class="bolded"></span></button>
     <div class="content">
       <div id="25-Create-Your-Own-Project-Runner-1hr-22min">
         <h3>25-Create-Your-Own-Project-Runner-1hr-22min</h3>
@@ -2885,10 +4433,10 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" class="collapsible">Open Collapsible - <span class="bolded"></span></button>
     <div class="content">
       <div id="26-Project-Start-E-Commerce-App-1hr-9min">
         <h3>26-Project-Start-E-Commerce-App-1hr-9min</h3>
@@ -2896,10 +4444,10 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" class="collapsible">Open Collapsible - <span class="bolded"></span></button>
     <div class="content">
       <div id="27-Design-a-Custom-Database-1hr-21min">
         <h3>27-Design-a-Custom-Database-1hr-21min</h3>
@@ -2907,21 +4455,22 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" id="28-Production-Grade-Authentication-1hr-18min"
+      class="collapsible">28-Production-Grade-Authentication-1hr-18min</button>
     <div class="content">
-      <div id="28-Production-Grade-Authentication-1hr-18min">
+      <div>
         <h3>28-Production-Grade-Authentication-1hr-18min</h3>
         <h4><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener noreferrer">Closest thing to a
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" class="collapsible">Open Collapsible - <span class="bolded"></span></button>
     <div class="content">
       <div id="29-Structuring-Javascript-Projects-2hr-32min">
         <h3>29-Structuring-Javascript-Projects-2hr-32min</h3>
@@ -2929,10 +4478,10 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" class="collapsible">Open Collapsible - <span class="bolded"></span></button>
     <div class="content">
       <div id="30-Image-and-File-Upload-1hr-50min">
         <h3>30-Image-and-File-Upload-1hr-50min</h3>
@@ -2940,10 +4489,10 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" class="collapsible">Open Collapsible - <span class="bolded"></span></button>
     <div class="content">
       <div id="31-Building-a-Shopping-Cart-1hr-53min">
         <h3>31-Building-a-Shopping-Cart-1hr-53min</h3>
@@ -2951,10 +4500,10 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" class="collapsible">Open Collapsible - <span class="bolded"></span></button>
     <div class="content">
       <div id="32-The-Basics-of-Testing-1hr-56min">
         <h3>32-The-Basics-of-Testing-1hr-56min</h3>
@@ -2962,10 +4511,10 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" class="collapsible">Open Collapsible - <span class="bolded"></span></button>
     <div class="content">
       <div id="33-Building-a-Testing-Framework-From-Scratch-2hr-7min">
         <h3>33-Building-a-Testing-Framework-From-Scratch-2hr-7min</h3>
@@ -2973,7 +4522,7 @@
             documentation of Javascript</a>
         </h4>
 
-        <a href="#top-nav" class="goto-top">Goto top of page</a>
+        <a href="#top-nav" class="goto-top">Goto top of page</a> <br><br>
       </div>
     </div>
 
@@ -2983,37 +4532,7 @@
 
 
 
-    <script>
-      // this was initial script i started with then I like drop down that I am using
-      // var coll = document.getElementsByClassName("collapsible");
-      // var i;
-
-      // for (i = 0; i < coll.length; i++) {
-      //   coll[i].addEventListener("click", function () {
-      //     this.classList.toggle("active");
-      //     var content = this.nextElementSibling;
-      //     if (content.style.display === "block") {
-      //       content.style.display = "none";
-      //     } else {
-      //       content.style.display = "block";
-      //     }
-      //   });
-      // }
-      var coll = document.getElementsByClassName("collapsible");
-      var i;
-
-      for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-          this.classList.toggle("active");
-          var content = this.nextElementSibling;
-          if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-          } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-          }
-        });
-      }
-    </script>
+    <script src="app.js"></script>
 
 
 
