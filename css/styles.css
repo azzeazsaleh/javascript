@@ -22,14 +22,15 @@ code {
 }
 
 .goto-top {
-  color: #FF0D00;
-  background-color: lightcyan;
-  box-shadow: 7px 10px 7px 1px;
+  color: #111;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
   text-decoration: none;
 }
 
 .goto-top:hover {
-  color: blue;
+  color: #3282b8;
 }
 
 /* Style the button that is used to open and close the collapsible content */
@@ -51,14 +52,6 @@ code {
 .collapsible:hover {
   background-color: #ccc;
 }
-
-/* Style the collapsible content. Note: hidden by default */
-/* .content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
-} */
 
 .content {
   padding: 0 18px;
@@ -82,12 +75,17 @@ code {
   /* Unicode character for "minus" sign (-) */
 }
 
+
 img {
   width: 100%;
 }
 
 body {
   font-family: "Lato", sans-serif;
+}
+
+li {
+  padding-bottom: 15px;
 }
 
 .bolded {
@@ -140,6 +138,17 @@ body {
 
 .openbtn:hover {
   background-color: #444;
+}
+
+.openbtn1 {
+  color: #111;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.openbtn1:hover {
+  color: #3282b8;
 }
 
 #main {

@@ -1,5 +1,6 @@
 const coll = document.getElementsByClassName("collapsible");
 const menuBtn = document.getElementById("menuBtn");
+
 let nav = false;
 
 function adjust(content) {
@@ -59,3 +60,8 @@ function toggleNav() {
 }
 
 menuBtn.addEventListener("click", n => toggleNav());
+
+const menuBtns = document.getElementsByClassName("openbtn1");
+for(let menuBtn1 of menuBtns) {
+  menuBtn1.addEventListener("click", n => toggleNav());
+}
