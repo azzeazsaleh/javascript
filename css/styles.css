@@ -45,6 +45,7 @@ code {
   outline: none;
   font-size: 15px;
   box-shadow: 0 0 10px #7F7E7E;
+  
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -58,7 +59,7 @@ code {
   background-color: white;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  transition: max-height 0.2s ease-in-out;
 }
 
 .collapsible:after {
@@ -82,6 +83,7 @@ img {
 
 body {
   font-family: "Lato", sans-serif;
+  overflow-x: auto;
 }
 
 li {
